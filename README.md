@@ -5,9 +5,9 @@ NServiceBus.MessagePack
 
 Add support for [NServiceBus](http://particular.net/NServiceBus) message serialization via [MessagePack](https://github.com/msgpack/msgpack-cli)
 
-## Nuget
+## The nuget package  [![NuGet Status](http://img.shields.io/nuget/v/NServiceBus.MessagePack.svg?style=flat)](https://www.nuget.org/packages/NServiceBus.MessagePack/)
 
-### http://nuget.org/packages/NServiceBus.MessagePack/
+https://nuget.org/packages/NServiceBus.MessagePack/
 
     PM> Install-Package NServiceBus.MessagePack
 
