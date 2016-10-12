@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NServiceBus.MessagePack</RootNamespace>
     <AssemblyName>NServiceBus.MessagePack</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>6e0277de</NuGetPackageImportStamp>
@@ -34,11 +34,13 @@
     <DocumentationFile>bin\Release\NServiceBus.MessagePack.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MsgPack">
-      <HintPath>..\packages\MsgPack.Cli.0.5.7\lib\net45\MsgPack.dll</HintPath>
+    <Reference Include="MsgPack, Version=0.8.0.0, Culture=neutral, PublicKeyToken=a2625990d5dc0167, processorArchitecture=MSIL">
+      <HintPath>..\packages\MsgPack.Cli.0.8.0\lib\net45\MsgPack.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NServiceBus.Core">
-      <HintPath>..\packages\NServiceBus.5.1.2\lib\net45\NServiceBus.Core.dll</HintPath>
+    <Reference Include="NServiceBus.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NServiceBus.6.0.0\lib\net452\NServiceBus.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,9 +50,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ConstructorDelegateBuilder.cs" />
+    <Compile Include="MessagePackConfigurationExtensions.cs" />
+    <Compile Include="Guard.cs" />
     <Compile Include="MessageSerializer.cs" />
-    <Compile Include="SerializationFeature.cs" />
-    <Compile Include="Definition.cs" />
+    <Compile Include="MessagePackSerializer.cs" />
+    <Compile Include="ScheduledTaskHelper.cs" />
+    <Compile Include="ScheduledTaskWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NServiceBus.MessagePack.nuspec" />
@@ -65,9 +71,9 @@
       <FilesToDelete Include="$(SolutionDir)NuGetBuildCodeOnly\**\*.*" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
-    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET45" />
-    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET45" />
-    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET45" />
+    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET452" />
+    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET452" />
+    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET452" />
     <Copy SourceFiles="$(ProjectDir)NServiceBus.MessagePack.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild" MetadataAssembly="$(OutputPath)\NServiceBus.MessagePack.dll" />
   </Target>
