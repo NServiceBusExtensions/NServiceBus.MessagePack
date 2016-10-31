@@ -13,12 +13,9 @@ https://nuget.org/packages/NServiceBus.MessagePack/
     PM> Install-Package NServiceBus.MessagePack
 
 
-## Usage
+## Documentation
 
-```
-var config = new EndpointConfiguration("EndpoinName");
-config.UseSerialization<MessagePackSerializer>();
-```
+https://docs.particular.net/nservicebus/serialization/message-pack
 
 
 ## Icon
