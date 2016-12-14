@@ -7,7 +7,7 @@ namespace NServiceBus
 {
 
     /// <summary>
-    /// Extensions for <see cref="SerializationExtensions{T}"/> to manipulate how messages are serialized via Jil.
+    /// Extensions for <see cref="SerializationExtensions{T}"/> to manipulate how messages are serialized.
     /// </summary>
     public static class MessagePackConfigurationExtensions
     {

@@ -14,7 +14,7 @@
     <language>en-AU</language>
     <tags>NServiceBus, MessagePack, Serialization</tags>
 	  <dependencies>
-      <dependency id="NServiceBus" version="[6.0.0, 7.0.0)" />
+      <dependency id="NServiceBus" version="[6.1.0, 7.0.0)" />
       <dependency id="MsgPack.Cli" version="[0.8.0, 1.0.0)" />
 	  </dependencies>
   </metadata>

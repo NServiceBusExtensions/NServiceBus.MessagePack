@@ -43,13 +43,6 @@ namespace NServiceBus.MessagePack
                 throw new Exception("Interface based message are not supported. Create a class that implements the desired interface.");
             }
 
-            if (messageType.IsScheduleTask())
-            {
-                var wrapperSerializer = context.GetSerializer<ScheduledTaskWrapper>();
-                wrapperSerializer.Pack(stream, ScheduledTaskHelper.ToWrapper(message));
-                return;
-            }
-
 
             var handle = messageType.TypeHandle;
             if (emptyTypesBag.ContainsKey(handle))
@@ -88,15 +81,6 @@ namespace NServiceBus.MessagePack
         object DeserializeInner(Stream stream, IList<Type> messageTypes)
         {
             var messageType = messageTypes.First();
-
-
-            if (messageType.IsScheduleTask())
-            {
-                var wrapperSerializer = context.GetSerializer<ScheduledTaskWrapper>();
-                var scheduledTaskWrapper = wrapperSerializer.Unpack(stream);
-                return ScheduledTaskHelper.FromWrapper(scheduledTaskWrapper);
-            }
-
 
             var typeHandle = messageType.TypeHandle;
             Func<object> constructor;
