@@ -36,6 +36,8 @@
 *.dotCover
 *test-results*
 
+.vs/
+.learningtransport/
 
 ##  If you have NuGet Package Restore enabled, uncomment this
 packages/
