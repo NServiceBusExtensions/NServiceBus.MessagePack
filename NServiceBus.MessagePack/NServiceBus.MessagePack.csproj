@@ -1,26 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
-    <WarningLevel>4</WarningLevel>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>NServiceBus.MessagePack</PackageId>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
+    <InformationalVersion>$(FileVersion)</InformationalVersion>
+    <PackageVersion>$(FileVersion)-beta001</PackageVersion>
+    <Authors>Simon Cropp</Authors>
+    <PackageLicenseUrl>http://www.opensource.org/licenses/mit-license.php</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright $([System.DateTime]::UtcNow.ToString(yyyy)) Simon Cropp. All rights reserved</Copyright>
+    <PackageTags>NServiceBus, MessagePack, Serialization</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/SimonCropp/NServiceBus.MessagePack/master/Icon/package_icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://docs.particular.net/nuget/$(PackageId)</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePDBsInPackage</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NServiceBus" Version="6.3.4" />
-    <PackageReference Include="MsgPack.Cli" Version="0.8.1" />
-    <PackageReference Include="PepitaPackage" Version="1.21.4" />
+    <PackageReference Include="NServiceBus" Version="[7.0.0-*, 8.0.0)" />
+    <PackageReference Include="MsgPack.Cli" Version="[0.8.1, 1.0.0)" />
   </ItemGroup>
-  <Target Name="NuGetBuild" AfterTargets="AfterBuild">
+  <Target Name="IncludePDBsInPackage">
     <ItemGroup>
-      <FilesToDelete Include="$(SolutionDir)NuGetBuild\**\*.*" />
+      <TfmSpecificPackageFile Include="$(OutputPath)\$(AssemblyName).pdb" PackagePath="lib/$(TargetFramework)" />
     </ItemGroup>
-    <Delete Files="@(FilesToDelete)" />
-    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET452" />
-    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET452" />
-    <Copy SourceFiles="$(OutputPath)NServiceBus.MessagePack.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET452" />
-    <Copy SourceFiles="$(ProjectDir)NServiceBus.MessagePack.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
-    <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild" MetadataAssembly="$(OutputPath)\NServiceBus.MessagePack.dll" />
   </Target>
 </Project>
