@@ -38,14 +38,7 @@
 
 .vs/
 .learningtransport/
-
-##  If you have NuGet Package Restore enabled, uncomment this
-packages/
-ForSample/
-NugetBuild/
-NuGetBuildCodeOnly/
-ChocolateyNuGetBuild/
-NuGetTracingBuild/
+nugets/
 
 # Visual Studio profiler
 *.psess
