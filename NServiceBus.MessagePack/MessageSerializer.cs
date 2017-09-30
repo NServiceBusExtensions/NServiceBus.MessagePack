@@ -1,110 +1,58 @@
-﻿using System.Collections.Concurrent;
-using System.Runtime.Serialization;
+﻿using MessagePack;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using NServiceBus.Serialization;
 
-namespace NServiceBus.MessagePack
+class MessageSerializer : IMessageSerializer
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using MsgPack.Serialization;
-    using Serialization;
+    IFormatterResolver resolver;
 
-    class MessageSerializer : IMessageSerializer
+    public MessageSerializer(string contentType, IFormatterResolver resolver)
     {
-        SerializationContext context;
-        ConcurrentDictionary<RuntimeTypeHandle, Func<object>> emptyTypesBag = new ConcurrentDictionary<RuntimeTypeHandle, Func<object>>();
-
-        public MessageSerializer(string contentType, SerializationContext context)
+        if (resolver == null)
         {
-            if (context == null)
-            {
-                this.context = SerializationContext.Default;
-            }
-            else
-            {
-                this.context = context;
-            }
-            if (contentType == null)
-            {
-                ContentType = "messagepack";
-            }
-            else
-            {
-                ContentType = contentType;
-            }
+            this.resolver = MessagePackSerializer.DefaultResolver;
         }
-
-        public void Serialize(object message, Stream stream)
+        else
         {
-            var messageType = message.GetType();
-            if (messageType.Name.EndsWith("__impl"))
-            {
-                throw new Exception("Interface based message are not supported. Create a class that implements the desired interface.");
-            }
-
-
-            var handle = messageType.TypeHandle;
-            if (emptyTypesBag.ContainsKey(handle))
-            {
-                return;
-            }
-            MsgPack.Serialization.MessagePackSerializer serializer;
-            try
-            {
-                serializer = context.GetSerializer(messageType);
-            }
-            catch (SerializationException exception)
-                when (IsEmptyTypeException(exception))
-            {
-                stream.WriteByte(0);
-                emptyTypesBag[handle] = ConstructorDelegateBuilder.BuildConstructorFunc(messageType);
-                return;
-            }
-            serializer.Pack(stream, message);
+            this.resolver = resolver;
         }
-
-        static bool IsEmptyTypeException(SerializationException exception)
+        if (contentType == null)
         {
-            return exception.Message.Contains("because it does not have any serializable fields nor properties.");
+            ContentType = "messagepack";
         }
-
-        public object[] Deserialize(Stream stream, IList<Type> messageTypes)
+        else
         {
-            var deserializeInner = DeserializeInner(stream, messageTypes);
-            return new[]
-            {
-                deserializeInner
-            };
+            ContentType = contentType;
         }
-
-        object DeserializeInner(Stream stream, IList<Type> messageTypes)
-        {
-            var messageType = messageTypes.First();
-
-            var typeHandle = messageType.TypeHandle;
-            Func<object> constructor;
-            if (emptyTypesBag.TryGetValue(typeHandle, out constructor))
-            {
-                return constructor();
-            }
-            MsgPack.Serialization.MessagePackSerializer serializer;
-            try
-            {
-                serializer = context.GetSerializer(messageType);
-            }
-            catch (SerializationException exception)
-                when (IsEmptyTypeException(exception))
-            {
-                constructor = emptyTypesBag.GetOrAdd(
-                    key: typeHandle,
-                    valueFactory: handle => ConstructorDelegateBuilder.BuildConstructorFunc(messageType));
-                return constructor();
-            }
-
-            return serializer.Unpack(stream);
-        }
-
-        public string ContentType { get; }
     }
+
+    public void Serialize(object message, Stream stream)
+    {
+        var messageType = message.GetType();
+        if (messageType.Name.EndsWith("__impl"))
+        {
+            throw new Exception("Interface based message are not supported. Create a class that implements the desired interface.");
+        }
+
+        MessagePackSerializer.NonGeneric.Serialize(message.GetType(), stream, message, resolver);
+    }
+
+    public object[] Deserialize(Stream stream, IList<Type> messageTypes)
+    {
+        return new[]
+        {
+            DeserializeInner(stream, messageTypes)
+        };
+    }
+
+    object DeserializeInner(Stream stream, IList<Type> messageTypes)
+    {
+        var messageType = messageTypes.First();
+        return MessagePackSerializer.NonGeneric.Deserialize(messageType, stream, resolver);
+    }
+
+    public string ContentType { get; }
 }

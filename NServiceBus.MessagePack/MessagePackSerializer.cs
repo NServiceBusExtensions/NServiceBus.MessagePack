@@ -5,13 +5,11 @@ using NServiceBus.Serialization;
 
 namespace NServiceBus.MessagePack
 {
-
     /// <summary>
     /// Defines the capabilities of the MessagePack serializer
     /// </summary>
     public class MessagePackSerializer : SerializationDefinition
     {
-
         /// <summary>
         /// <see cref="SerializationDefinition.Configure"/>
         /// </summary>
@@ -19,7 +17,7 @@ namespace NServiceBus.MessagePack
         {
             return mapper =>
             {
-                var context = settings.GetContext();
+                var context = settings.GetResolver();
                 var contentTypeKey = settings.GetContentTypeKey();
                 return new MessageSerializer(contentTypeKey, context);
             };

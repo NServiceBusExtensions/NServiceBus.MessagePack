@@ -1,32 +1,31 @@
-﻿using MsgPack.Serialization;
+﻿using MessagePack;
 using NServiceBus.Configuration.AdvanceExtensibility;
 using NServiceBus.Serialization;
 using NServiceBus.Settings;
 
 namespace NServiceBus
 {
-
     /// <summary>
     /// Extensions for <see cref="SerializationExtensions{T}"/> to manipulate how messages are serialized.
     /// </summary>
     public static class MessagePackConfigurationExtensions
     {
-
         /// <summary>
-        /// Configures the <see cref="SerializationContext"/> to use.
+        /// Configures the <see cref="IFormatterResolver"/> to use.
         /// </summary>
         /// <param name="config">The <see cref="SerializationExtensions{T}"/> instance.</param>
-        /// <param name="context">The <see cref="SerializationContext"/> to use.</param>
-        public static void Context(this SerializationExtensions<MessagePack.MessagePackSerializer> config, SerializationContext context)
+        /// <param name="resolver">The <see cref="IFormatterResolver"/> to use.</param>
+        public static void Resolver(this SerializationExtensions<MessagePack.MessagePackSerializer> config, IFormatterResolver resolver)
         {
             Guard.AgainstNull(config, nameof(config));
+            Guard.AgainstNull(resolver, nameof(resolver));
             var settings = config.GetSettings();
-            settings.Set<SerializationContext>(context);
+            settings.Set<IFormatterResolver>(resolver);
         }
 
-        internal static SerializationContext GetContext(this ReadOnlySettings settings)
+        internal static IFormatterResolver GetResolver(this ReadOnlySettings settings)
         {
-            return settings.GetOrDefault<SerializationContext>();
+            return settings.GetOrDefault<IFormatterResolver>();
         }
 
         /// <summary>

@@ -1,37 +1,33 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MessagePack.Resolvers;
 using NServiceBus;
 using NServiceBus.MessagePack;
 
 class Program
 {
-    static void Main()
+    static async Task Main()
     {
-        AsyncMain().GetAwaiter().GetResult();
-    }
+        var configuration = new EndpointConfiguration("MessagePackSerializerSample");
+        var serialization = configuration.UseSerialization<MessagePackSerializer>();
+        serialization.Resolver(ContractlessStandardResolver.Instance);
+        configuration.UsePersistence<InMemoryPersistence>();
+        configuration.UseTransport<LearningTransport>();
 
-    static async Task AsyncMain()
-    {
-        var endpointConfiguration = new EndpointConfiguration("MessagePackSerializerSample");
-        endpointConfiguration.UseSerialization<MessagePackSerializer>();
-        endpointConfiguration.EnableInstallers();
-        endpointConfiguration.SendFailedMessagesTo("error");
-        endpointConfiguration.UsePersistence<InMemoryPersistence>();
+        var endpoint = await Endpoint.Start(configuration);
+        var message = new MyMessage
+        {
+            DateSend = DateTime.Now,
+        };
+        await endpoint.SendLocal(message);
+        var startSaga = new StartSaga
+        {
+            TheId = Guid.NewGuid(),
+        };
+        await endpoint.SendLocal(startSaga);
 
-        var endpoint = await Endpoint.Start(endpointConfiguration);
-        try
-        {
-            var message = new MyMessage
-            {
-                DateSend = DateTime.Now,
-            };
-            await endpoint.SendLocal(message);
-            Console.WriteLine("\r\nPress any key to stop program\r\n");
-            Console.Read();
-        }
-        finally
-        {
-            await endpoint.Stop();
-        }
+        Console.WriteLine("Press any key to stop program");
+        Console.Read();
+        await endpoint.Stop();
     }
 }
