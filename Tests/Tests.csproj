@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="*" />
-    <ProjectReference Include="..\NServiceBus.MessagePack\NServiceBus.MessagePack.csproj"/>
+    <PackageReference Include="Xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <ProjectReference Include="..\NServiceBus.MessagePack\NServiceBus.MessagePack.csproj" />
   </ItemGroup>
 </Project>
