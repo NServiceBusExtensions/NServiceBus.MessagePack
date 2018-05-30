@@ -1,4 +1,4 @@
-![Icon](https://raw.githubusercontent.com/NServiceBusExtensions/NServiceBus.MessagePack/master/Icon/package_icon.png)
+![Icon](https://raw.githubusercontent.com/NServiceBusExtensions/NServiceBus.MessagePack/master/icon.png)
 
 NServiceBus.MessagePack
 ===========================
