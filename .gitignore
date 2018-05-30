@@ -10,9 +10,10 @@
 *.user
 *.sln.docstates
 *.pidb
-*.ncrunchsolution
-*.ncrunchproject
-*.DotSettings
+.learningtransport
+
+.vs
+*.received.txt
 
 # Build results
 [Dd]ebug/
@@ -83,3 +84,4 @@ Fody/.DS_Store
 
 *.userprefs
 *.jtconfig
+*.bak
