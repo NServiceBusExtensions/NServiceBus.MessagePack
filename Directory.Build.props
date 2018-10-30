@@ -11,6 +11,7 @@
     <PackageTags>NServiceBus, MessagePack</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/NServiceBusExtensions/NServiceBus.MessagePack/master/icon.png</PackageIconUrl>
     <PackageProjectUrl>https://docs.particular.net/nuget/NServiceBus.MessagePack</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NServiceBusExtensions/NServiceBus.MessagePack</RepositoryUrl>
     <PackageOutputPath>..\nugets</PackageOutputPath>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../key.snk</AssemblyOriginatorKeyFile>
