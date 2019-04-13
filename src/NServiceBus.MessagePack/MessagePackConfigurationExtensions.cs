@@ -32,7 +32,7 @@ namespace NServiceBus
         /// Configures string to use for <see cref="Headers.ContentType"/> headers.
         /// </summary>
         /// <remarks>
-        /// Defaults to "wire".
+        /// Defaults to "messagepack".
         /// </remarks>
         /// <param name="config">The <see cref="SerializationExtensions{T}"/> instance.</param>
         /// <param name="contentTypeKey">The content type key to use.</param>
