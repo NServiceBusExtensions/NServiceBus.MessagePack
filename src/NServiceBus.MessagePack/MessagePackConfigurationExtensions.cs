@@ -20,7 +20,7 @@ namespace NServiceBus
             Guard.AgainstNull(config, nameof(config));
             Guard.AgainstNull(resolver, nameof(resolver));
             var settings = config.GetSettings();
-            settings.Set<IFormatterResolver>(resolver);
+            settings.Set(resolver);
         }
 
         internal static IFormatterResolver GetResolver(this ReadOnlySettings settings)
