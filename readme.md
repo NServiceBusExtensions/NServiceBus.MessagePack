@@ -1,4 +1,4 @@
-<img src="https://raw.github.com/NServiceBusExtensions/NServiceBus.MessagePack/master/src/icon.png" height="25px"> Add support for [NServiceBus](https://docs.particular.net/nservicebus/) message serialization via [MessagePack](https://github.com/neuecc/MessagePack-CSharp/)
+<img src="/src/icon.png" height="25px"> Add support for [NServiceBus](https://docs.particular.net/nservicebus/) message serialization via [MessagePack](https://github.com/neuecc/MessagePack-CSharp/)
 
 <!--- StartOpenCollectiveBackers -->
 
@@ -24,9 +24,9 @@ Thanks to all the backing developers! Support this project by [becoming a patron
 <!--- EndOpenCollectiveBackers -->
 <a href="#" id="endofbacking"></a>
 
-## The NuGet package [![NuGet Status](http://img.shields.io/nuget/v/NServiceBus.MessagePack.svg)](https://www.nuget.org/packages/NServiceBus.MessagePack/)
+## NuGet package
 
-https://nuget.org/packages/NServiceBus.MessagePack/
+https://nuget.org/packages/NServiceBus.MessagePack/ [![NuGet Status](http://img.shields.io/nuget/v/NServiceBus.MessagePack.svg)](https://www.nuget.org/packages/NServiceBus.MessagePack/)
 
 
 ## Documentation
@@ -36,4 +36,4 @@ https://docs.particular.net/nuget/NServiceBus.MessagePack
 
 ## Icon
 
-<a href="http://thenounproject.com/term/backpack/75402/" target="_blank">Backpack</a> designed by <a href="http://thenounproject.com/driskell/" target="_blank">Nathan Driskell</a> from The Noun Project
+[Backpack](https://thenounproject.com/term/backpack/75402/) designed by [Nathan Driskell](https://thenounproject.com/driskell/) from [The Noun Project](https://thenounproject.com).
