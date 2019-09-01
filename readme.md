@@ -26,7 +26,7 @@ Thanks to all the backing developers! Support this project by [becoming a patron
 
 ## NuGet package
 
-https://nuget.org/packages/NServiceBus.MessagePack/ [![NuGet Status](http://img.shields.io/nuget/v/NServiceBus.MessagePack.svg)](https://www.nuget.org/packages/NServiceBus.MessagePack/)
+https://nuget.org/packages/NServiceBus.MessagePack/ [![NuGet Status](https://img.shields.io/nuget/v/NServiceBus.MessagePack.svg)](https://www.nuget.org/packages/NServiceBus.MessagePack/)
 
 
 ## Documentation
