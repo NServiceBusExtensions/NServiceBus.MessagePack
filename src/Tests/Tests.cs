@@ -1,7 +1,7 @@
 ﻿using Xunit.Abstractions;
 
 public class Tests :
-    XunitLoggingBase
+    XunitApprovalBase
 {
     public Tests(ITestOutputHelper output) :
         base(output)
