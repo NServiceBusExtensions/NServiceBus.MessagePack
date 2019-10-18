@@ -5,7 +5,8 @@ using System.IO;
 using System.Linq;
 using NServiceBus.Serialization;
 
-class MessageSerializer : IMessageSerializer
+class MessageSerializer :
+    IMessageSerializer
 {
     IFormatterResolver resolver;
 
