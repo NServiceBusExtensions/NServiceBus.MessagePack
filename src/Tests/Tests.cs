@@ -1,7 +1,8 @@
-﻿using Xunit.Abstractions;
+﻿using VerifyXunit;
+using Xunit.Abstractions;
 
 public class Tests :
-    XunitApprovalBase
+    VerifyBase
 {
     public Tests(ITestOutputHelper output) :
         base(output)
