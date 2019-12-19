@@ -8,7 +8,7 @@ To change this file edit the source file and then run MarkdownSnippets.
 # <img src="/src/icon.png" height="30px"> NServiceBus.MessagePack
 
 [![Build status](https://ci.appveyor.com/api/projects/status/qxwrielc2o0iyn8a/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/nservicebus-MessagePack)
-[![NuGet Status](https://img.shields.io/nuget/v/NServiceBus.MessagePack.svg?cacheSeconds=86400)](https://www.nuget.org/packages/NServiceBus.MessagePack/)
+[![NuGet Status](https://img.shields.io/nuget/v/NServiceBus.MessagePack.svg)](https://www.nuget.org/packages/NServiceBus.MessagePack/)
 
 Add support for [NServiceBus](https://docs.particular.net/nservicebus/) message serialization via [MessagePack](https://github.com/neuecc/MessagePack-CSharp/)
 
