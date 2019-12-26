@@ -4,30 +4,30 @@ using MessagePackSerializer = NServiceBus.MessagePack.MessagePackSerializer;
 
 class Usage
 {
-    Usage(EndpointConfiguration endpointConfiguration)
+    Usage(EndpointConfiguration configuration)
     {
         #region MessagePackSerialization
 
-        endpointConfiguration.UseSerialization<MessagePackSerializer>();
+        configuration.UseSerialization<MessagePackSerializer>();
 
         #endregion
     }
 
-    void CustomSettings(EndpointConfiguration endpointConfiguration)
+    void CustomSettings(EndpointConfiguration configuration)
     {
         #region MessagePackResolver
 
-        var serialization = endpointConfiguration.UseSerialization<MessagePackSerializer>();
+        var serialization = configuration.UseSerialization<MessagePackSerializer>();
         serialization.Resolver(ContractlessStandardResolver.Instance);
 
         #endregion
     }
 
-    void ContentTypeKey(EndpointConfiguration endpointConfiguration)
+    void ContentTypeKey(EndpointConfiguration configuration)
     {
         #region MessagePackContentTypeKey
 
-        var serialization = endpointConfiguration.UseSerialization<MessagePackSerializer>();
+        var serialization = configuration.UseSerialization<MessagePackSerializer>();
         serialization.ContentTypeKey("custom-key");
 
         #endregion
