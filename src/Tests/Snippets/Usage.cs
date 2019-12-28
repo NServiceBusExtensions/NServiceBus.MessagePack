@@ -1,4 +1,5 @@
-﻿using MessagePack.Resolvers;
+﻿using MessagePack;
+using MessagePack.Resolvers;
 using NServiceBus;
 using MessagePackSerializer = NServiceBus.MessagePack.MessagePackSerializer;
 
@@ -18,7 +19,10 @@ class Usage
         #region MessagePackResolver
 
         var serialization = configuration.UseSerialization<MessagePackSerializer>();
-        serialization.Resolver(ContractlessStandardResolver.Instance);
+        var options = MessagePackSerializerOptions
+            .Standard
+            .WithResolver(ContractlessStandardResolver.Instance);
+        serialization.Options(options);
 
         #endregion
     }

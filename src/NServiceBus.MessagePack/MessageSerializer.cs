@@ -8,17 +8,17 @@ using NServiceBus.Serialization;
 class MessageSerializer :
     IMessageSerializer
 {
-    IFormatterResolver resolver;
+    MessagePackSerializerOptions options;
 
-    public MessageSerializer(string contentType, IFormatterResolver resolver)
+    public MessageSerializer(string contentType, MessagePackSerializerOptions options)
     {
-        if (resolver == null)
+        if (options == null)
         {
-            this.resolver = MessagePackSerializer.DefaultResolver;
+            this.options = MessagePackSerializerOptions.Standard;
         }
         else
         {
-            this.resolver = resolver;
+            this.options = options;
         }
         if (contentType == null)
         {
@@ -38,7 +38,7 @@ class MessageSerializer :
             throw new Exception("Interface based message are not supported. Create a class that implements the desired interface.");
         }
 
-        MessagePackSerializer.NonGeneric.Serialize(message.GetType(), stream, message, resolver);
+        MessagePackSerializer.Serialize(message.GetType(), stream, message, options);
     }
 
     public object[] Deserialize(Stream stream, IList<Type> messageTypes)
@@ -52,7 +52,7 @@ class MessageSerializer :
     object DeserializeInner(Stream stream, IList<Type> messageTypes)
     {
         var messageType = messageTypes.First();
-        return MessagePackSerializer.NonGeneric.Deserialize(messageType, stream, resolver);
+        return MessagePackSerializer.Deserialize(messageType, stream, options);
     }
 
     public string ContentType { get; }

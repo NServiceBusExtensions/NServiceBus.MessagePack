@@ -20,9 +20,7 @@ Add support for [NServiceBus](https://docs.particular.net/nservicebus/) message 
     * [Patrons](#patrons)
   * [Usage](#usage)
     * [Resolver](#resolver)
-    * [Custom content key](#custom-content-key)
-<!-- endtoc -->
-
+    * [Custom content key](#custom-content-key)<!-- endtoc -->
 
 <!--- StartOpenCollectiveBackers -->
 
@@ -54,9 +52,9 @@ Thanks to all the backing developers! Support this project by [becoming a patron
 <!-- snippet: MessagePackSerialization -->
 <a id='snippet-messagepackserialization'/></a>
 ```cs
-endpointConfiguration.UseSerialization<MessagePackSerializer>();
+configuration.UseSerialization<MessagePackSerializer>();
 ```
-<sup>[snippet source](/src/Tests/Snippets/Usage.cs#L9-L13) / [anchor](#snippet-messagepackserialization)</sup>
+<sup><a href='/src/Tests/Snippets/Usage.cs#L10-L14' title='File snippet `messagepackserialization` was extracted from'>snippet source</a> | <a href='#snippet-messagepackserialization' title='Navigate to start of snippet `messagepackserialization`'>anchor</a></sup>
 <!-- endsnippet -->
 
 This serializer does not support [messages defined as interfaces](https://docs.particular.net/nservicebus/messaging/messages-as-interfaces). If an explicit interface is sent, an exception will be thrown with the following message:
@@ -76,10 +74,13 @@ Customizes the instance of `IFormatterResolver` used for serialization.
 <!-- snippet: MessagePackResolver -->
 <a id='snippet-messagepackresolver'/></a>
 ```cs
-var serialization = endpointConfiguration.UseSerialization<MessagePackSerializer>();
-serialization.Resolver(ContractlessStandardResolver.Instance);
+var serialization = configuration.UseSerialization<MessagePackSerializer>();
+var options = MessagePackSerializerOptions
+    .Standard
+    .WithResolver(ContractlessStandardResolver.Instance);
+serialization.Options(options);
 ```
-<sup>[snippet source](/src/Tests/Snippets/Usage.cs#L18-L23) / [anchor](#snippet-messagepackresolver)</sup>
+<sup><a href='/src/Tests/Snippets/Usage.cs#L19-L27' title='File snippet `messagepackresolver` was extracted from'>snippet source</a> | <a href='#snippet-messagepackresolver' title='Navigate to start of snippet `messagepackresolver`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -90,10 +91,10 @@ When using [additional deserializers](https://docs.particular.net/nservicebus/se
 <!-- snippet: MessagePackContentTypeKey -->
 <a id='snippet-messagepackcontenttypekey'/></a>
 ```cs
-var serialization = endpointConfiguration.UseSerialization<MessagePackSerializer>();
+var serialization = configuration.UseSerialization<MessagePackSerializer>();
 serialization.ContentTypeKey("custom-key");
 ```
-<sup>[snippet source](/src/Tests/Snippets/Usage.cs#L28-L33) / [anchor](#snippet-messagepackcontenttypekey)</sup>
+<sup><a href='/src/Tests/Snippets/Usage.cs#L32-L37' title='File snippet `messagepackcontenttypekey` was extracted from'>snippet source</a> | <a href='#snippet-messagepackcontenttypekey' title='Navigate to start of snippet `messagepackcontenttypekey`'>anchor</a></sup>
 <!-- endsnippet -->
 
 

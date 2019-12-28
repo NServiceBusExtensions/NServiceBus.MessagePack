@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MessagePack;
 using MessagePack.Resolvers;
 using NServiceBus;
-using NServiceBus.MessagePack;
+using MessagePackSerializer = NServiceBus.MessagePack.MessagePackSerializer;
 
 class Program
 {
@@ -10,7 +11,10 @@ class Program
     {
         var configuration = new EndpointConfiguration("MessagePackSerializerSample");
         var serialization = configuration.UseSerialization<MessagePackSerializer>();
-        serialization.Resolver(ContractlessStandardResolver.Instance);
+        var options = MessagePackSerializerOptions
+            .Standard
+            .WithResolver(ContractlessStandardResolver.Instance);
+        serialization.Options(options);
         configuration.UsePersistence<InMemoryPersistence>();
         configuration.UseTransport<LearningTransport>();
 

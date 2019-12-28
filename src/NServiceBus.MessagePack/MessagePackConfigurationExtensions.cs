@@ -11,21 +11,21 @@ namespace NServiceBus
     public static class MessagePackConfigurationExtensions
     {
         /// <summary>
-        /// Configures the <see cref="IFormatterResolver"/> to use.
+        /// Configures the <see cref="MessagePackSerializerOptions"/> to use.
         /// </summary>
         /// <param name="config">The <see cref="SerializationExtensions{T}"/> instance.</param>
-        /// <param name="resolver">The <see cref="IFormatterResolver"/> to use.</param>
-        public static void Resolver(this SerializationExtensions<MessagePack.MessagePackSerializer> config, IFormatterResolver resolver)
+        /// <param name="options">The <see cref="MessagePackSerializerOptions"/> to use.</param>
+        public static void Options(this SerializationExtensions<MessagePack.MessagePackSerializer> config, MessagePackSerializerOptions options)
         {
             Guard.AgainstNull(config, nameof(config));
-            Guard.AgainstNull(resolver, nameof(resolver));
+            Guard.AgainstNull(options, nameof(options));
             var settings = config.GetSettings();
-            settings.Set(resolver);
+            settings.Set(options);
         }
 
-        internal static IFormatterResolver GetResolver(this ReadOnlySettings settings)
+        internal static MessagePackSerializerOptions GetOptions(this ReadOnlySettings settings)
         {
-            return settings.GetOrDefault<IFormatterResolver>();
+            return settings.GetOrDefault<MessagePackSerializerOptions>();
         }
 
         /// <summary>

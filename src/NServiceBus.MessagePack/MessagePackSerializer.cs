@@ -19,7 +19,7 @@ namespace NServiceBus.MessagePack
             Guard.AgainstNull(settings, nameof(settings));
             return mapper =>
             {
-                var context = settings.GetResolver();
+                var context = settings.GetOptions();
                 var contentTypeKey = settings.GetContentTypeKey();
                 return new MessageSerializer(contentTypeKey, context);
             };
