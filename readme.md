@@ -34,7 +34,8 @@ Thanks to the current backers.
 
   * [Usage](#usage)
     * [Resolver](#resolver)
-    * [Custom content key](#custom-content-key)<!-- endtoc -->
+    * [Custom content key](#custom-content-key)
+  * [Security contact information](#security-contact-information)<!-- endtoc -->
 
 
 ## Usage
@@ -88,9 +89,9 @@ serialization.ContentTypeKey("custom-key");
 <!-- endsnippet -->
 
 
-## Release Notes
+## Security contact information
 
-See [closed milestones](../../milestones?state=closed).
+To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
