@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NServiceBus" Version="7.2.3" />
-    <PackageReference Include="MessagePack" Version="2.1.90" />
+    <PackageReference Include="MessagePack" Version="2.1.115" />
     <PackageReference Include="ProjectDefaults" Version="1.0.42" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
   </ItemGroup>
