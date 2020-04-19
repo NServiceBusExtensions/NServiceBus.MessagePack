@@ -2,6 +2,7 @@
 <Project>
   <PropertyGroup>
     <Version>5.0.1</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageTags>NServiceBus, MessagePack</PackageTags>
   </PropertyGroup>
 </Project>
