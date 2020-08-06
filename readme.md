@@ -55,7 +55,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
 ## Usage
 
 <!-- snippet: MessagePackSerialization -->
-<a id='snippet-messagepackserialization'/></a>
+<a id='snippet-messagepackserialization'></a>
 ```cs
 configuration.UseSerialization<MessagePackSerializer>();
 ```
@@ -77,7 +77,7 @@ Instead, use a public class with the same contract as the interface. The class c
 Customizes the instance of `IFormatterResolver` used for serialization.
 
 <!-- snippet: MessagePackResolver -->
-<a id='snippet-messagepackresolver'/></a>
+<a id='snippet-messagepackresolver'></a>
 ```cs
 var serialization = configuration.UseSerialization<MessagePackSerializer>();
 var options = MessagePackSerializerOptions
@@ -94,7 +94,7 @@ serialization.Options(options);
 When using [additional deserializers](https://docs.particular.net/nservicebus/serialization/#specifying-additional-deserializers) or transitioning between different versions of the same serializer it can be helpful to take explicit control over the content type a serializer passes to NServiceBus (to be used for the [ContentType header](https://docs.particular.net/nservicebus/messaging/headers#serialization-headers-nservicebus-contenttype)).
 
 <!-- snippet: MessagePackContentTypeKey -->
-<a id='snippet-messagepackcontenttypekey'/></a>
+<a id='snippet-messagepackcontenttypekey'></a>
 ```cs
 var serialization = configuration.UseSerialization<MessagePackSerializer>();
 serialization.ContentTypeKey("custom-key");
