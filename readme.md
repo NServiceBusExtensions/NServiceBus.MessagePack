@@ -49,7 +49,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
   * [Usage](#usage)
     * [Resolver](#resolver)
     * [Custom content key](#custom-content-key)
-  * [Security contact information](#security-contact-information)<!-- endtoc -->
+  * [Security contact information](#security-contact-information)<!-- endToc -->
 
 
 ## Usage
@@ -60,7 +60,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
 configuration.UseSerialization<MessagePackSerializer>();
 ```
 <sup><a href='/src/Tests/Snippets/Usage.cs#L10-L14' title='File snippet `messagepackserialization` was extracted from'>snippet source</a> | <a href='#snippet-messagepackserialization' title='Navigate to start of snippet `messagepackserialization`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 This serializer does not support [messages defined as interfaces](https://docs.particular.net/nservicebus/messaging/messages-as-interfaces). If an explicit interface is sent, an exception will be thrown with the following message:
 
@@ -86,7 +86,7 @@ var options = MessagePackSerializerOptions
 serialization.Options(options);
 ```
 <sup><a href='/src/Tests/Snippets/Usage.cs#L19-L27' title='File snippet `messagepackresolver` was extracted from'>snippet source</a> | <a href='#snippet-messagepackresolver' title='Navigate to start of snippet `messagepackresolver`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ### Custom content key
@@ -100,7 +100,7 @@ var serialization = configuration.UseSerialization<MessagePackSerializer>();
 serialization.ContentTypeKey("custom-key");
 ```
 <sup><a href='/src/Tests/Snippets/Usage.cs#L32-L37' title='File snippet `messagepackcontenttypekey` was extracted from'>snippet source</a> | <a href='#snippet-messagepackcontenttypekey' title='Navigate to start of snippet `messagepackcontenttypekey`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ## Security contact information
