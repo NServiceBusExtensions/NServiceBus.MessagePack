@@ -38,20 +38,6 @@ Thanks to all the backing developers. Support this project by [becoming a patron
 <!--- EndOpenCollectiveBackers -->
 
 
-## Support via TideLift
-
-Support is available via a [Tidelift Subscription](https://tidelift.com/subscription/pkg/nuget-nservicebus.messagepack?utm_source=nuget-nservicebus.messagepack&utm_medium=referral&utm_campaign=enterprise).
-
-
-<!-- toc -->
-## Contents
-
-  * [Usage](#usage)
-    * [Resolver](#resolver)
-    * [Custom content key](#custom-content-key)
-  * [Security contact information](#security-contact-information)<!-- endToc -->
-
-
 ## Usage
 
 <!-- snippet: MessagePackSerialization -->
@@ -101,11 +87,6 @@ serialization.ContentTypeKey("custom-key");
 ```
 <sup><a href='/src/Tests/Snippets/Usage.cs#L32-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-messagepackcontenttypekey' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
-
-
-## Security contact information
-
-To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
