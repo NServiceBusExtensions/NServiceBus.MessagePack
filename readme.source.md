@@ -31,14 +31,6 @@ Thanks to all the backing developers. Support this project by [becoming a patron
 <!--- EndOpenCollectiveBackers -->
 
 
-## Support via TideLift
-
-Support is available via a [Tidelift Subscription](https://tidelift.com/subscription/pkg/nuget-nservicebus.messagepack?utm_source=nuget-nservicebus.messagepack&utm_medium=referral&utm_campaign=enterprise).
-
-
-toc
-
-
 ## Usage
 
 snippet: MessagePackSerialization
@@ -65,11 +57,6 @@ snippet: MessagePackResolver
 When using [additional deserializers](https://docs.particular.net/nservicebus/serialization/#specifying-additional-deserializers) or transitioning between different versions of the same serializer it can be helpful to take explicit control over the content type a serializer passes to NServiceBus (to be used for the [ContentType header](https://docs.particular.net/nservicebus/messaging/headers#serialization-headers-nservicebus-contenttype)).
 
 snippet: MessagePackContentTypeKey
-
-
-## Security contact information
-
-To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
