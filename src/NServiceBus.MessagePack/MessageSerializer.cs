@@ -10,7 +10,7 @@ class MessageSerializer :
 {
     MessagePackSerializerOptions options;
 
-    public MessageSerializer(string contentType, MessagePackSerializerOptions options)
+    public MessageSerializer(string? contentType, MessagePackSerializerOptions? options)
     {
         if (options == null)
         {
@@ -20,6 +20,7 @@ class MessageSerializer :
         {
             this.options = options;
         }
+
         if (contentType == null)
         {
             ContentType = "messagepack";
@@ -35,7 +36,7 @@ class MessageSerializer :
         var messageType = message.GetType();
         if (messageType.Name.EndsWith("__impl"))
         {
-            throw new Exception("Interface based message are not supported. Create a class that implements the desired interface.");
+            throw new("Interface based message are not supported. Create a class that implements the desired interface.");
         }
 
         MessagePackSerializer.Serialize(message.GetType(), stream, message, options);

@@ -17,8 +17,6 @@ namespace NServiceBus
         /// <param name="options">The <see cref="MessagePackSerializerOptions"/> to use.</param>
         public static void Options(this SerializationExtensions<MessagePack.MessagePackSerializer> config, MessagePackSerializerOptions options)
         {
-            Guard.AgainstNull(config, nameof(config));
-            Guard.AgainstNull(options, nameof(options));
             var settings = config.GetSettings();
             settings.Set(options);
         }
@@ -38,8 +36,7 @@ namespace NServiceBus
         /// <param name="contentTypeKey">The content type key to use.</param>
         public static void ContentTypeKey(this SerializationExtensions<MessagePack.MessagePackSerializer> config, string contentTypeKey)
         {
-            Guard.AgainstNull(config, nameof(config));
-            Guard.AgainstNullOrEmpty(contentTypeKey, nameof(contentTypeKey));
+            Guard.AgainstEmpty(contentTypeKey, nameof(contentTypeKey));
             var settings = config.GetSettings();
             settings.Set("NServiceBus.MessagePack.ContentTypeKey", contentTypeKey);
         }
