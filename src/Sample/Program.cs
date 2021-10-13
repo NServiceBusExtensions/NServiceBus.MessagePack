@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using MessagePack;
+﻿using MessagePack;
 using MessagePack.Resolvers;
 using NServiceBus;
 using MessagePackSerializer = NServiceBus.MessagePack.MessagePackSerializer;

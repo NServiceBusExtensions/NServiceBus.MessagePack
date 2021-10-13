@@ -1,8 +1,4 @@
 ﻿using MessagePack;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using NServiceBus.Serialization;
 
 class MessageSerializer :

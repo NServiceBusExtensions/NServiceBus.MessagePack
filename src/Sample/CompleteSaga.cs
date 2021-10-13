@@ -1,4 +1,3 @@
-using System;
 using NServiceBus;
 
 public class CompleteSaga :
